@@ -236,9 +236,9 @@ func Test_configTeamRankerImpl_Rank(t *testing.T) {
 				sorters: nil,
 			},
 			want: models.TeamRankList{
-				{TeamName: "Team 1", Points: 6},
-				{TeamName: "Team 2", Points: 3},
-				{TeamName: "Team 3", Points: 0},
+				{TeamName: "Team 1", Points: 6, Rank: 1},
+				{TeamName: "Team 2", Points: 3, Rank: 2},
+				{TeamName: "Team 3", Points: 0, Rank: 3},
 			},
 			wantErr: false,
 		}, {
@@ -256,9 +256,38 @@ func Test_configTeamRankerImpl_Rank(t *testing.T) {
 				},
 			},
 			want: models.TeamRankList{
-				{TeamName: "Team 3", Points: 0},
-				{TeamName: "Team 2", Points: 3},
-				{TeamName: "Team 1", Points: 6},
+				{TeamName: "Team 3", Points: 0, Rank: 1},
+				{TeamName: "Team 2", Points: 3, Rank: 2},
+				{TeamName: "Team 1", Points: 6, Rank: 3},
+			},
+			wantErr: false,
+		}, {
+			name:   "when there are teams with the same rank",
+			fields: fields{cfg: defaultRules},
+			args: args{
+				results: func() models.ResultStream {
+					res := append(results, &models.MatchResult{
+						TeamA:      "Team 4",
+						TeamB:      "Team 3",
+						TeamAScore: 1, // makes them have the same points as Team 2 with a single win
+						TeamBScore: 0,
+					})
+					out := make(models.ResultStream)
+					go func() {
+						defer close(out)
+						for _, result := range res {
+							out <- result
+						}
+					}()
+					return out
+				}(),
+				sorters: nil,
+			},
+			want: models.TeamRankList{
+				{TeamName: "Team 1", Points: 6, Rank: 1},
+				{TeamName: "Team 2", Points: 3, Rank: 2},
+				{TeamName: "Team 4", Points: 3, Rank: 2},
+				{TeamName: "Team 3", Points: 0, Rank: 3},
 			},
 			wantErr: false,
 		},

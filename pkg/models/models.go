@@ -65,6 +65,7 @@ type ResultStream chan *MatchResult
 type TeamRank struct {
 	TeamName string
 	Points   int
+	Rank     int
 }
 
 type TeamRankList []*TeamRank

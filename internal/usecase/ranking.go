@@ -98,7 +98,25 @@ func (c configTeamRankerImpl) Rank(results models.ResultStream, sorters ...func(
 		SortByTeamNameAsc(teamRankList)
 		SortByPointsDesc(teamRankList)
 	}
+	setRanks(teamRankList)
+
 	return teamRankList, nil
+}
+
+func setRanks(list models.TeamRankList) {
+	// avoid any complexity later on with an early exit
+	if len(list) == 0 {
+		return
+	}
+	// We are going to make bins of the same points with incrementing ranks
+	list[0].Rank = 1 // because we have different ways to rank, we must respect the order of list so the first one is always 1
+	for i := 1; i < len(list); i++ {
+		if list[i].Points == list[i-1].Points {
+			list[i].Rank = list[i-1].Rank
+		} else {
+			list[i].Rank = i + 1
+		}
+	}
 }
 
 // SortByPointsDesc sorts the team rank list by points in descending order

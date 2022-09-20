@@ -18,12 +18,10 @@ import (
 var rankCmd = &cobra.Command{
 	Use:   "rank",
 	Short: "Takes an input file of team match results and outputs a ranked list of teams",
-	PreRun: func(cmd *cobra.Command, args []string) {
-		if len(args) <= 1 {
+	Run: func(cmd *cobra.Command, args []string) {
+		if len(args) < 1 {
 			log.Fatal().Msg("missing input file(s) must have at least one file argument to rank")
 		}
-	},
-	Run: func(cmd *cobra.Command, args []string) {
 		type cmdConfig struct {
 			Rules config.RankingRules
 		}
@@ -44,21 +42,28 @@ var rankCmd = &cobra.Command{
 		}
 		defer func() {
 			for _, closer := range toClose {
-				err := closer.Close()
-				log.Error().Err(err).Msg("error closing file")
+				_ = closer.Close()
 			}
 		}()
 		errs := util.NewErrorCollector()
 		results := usecase.StreamResults(errs, inputs...)
 		rankings, err := runner.Rank(results)
 		util.MaybePanic(err)
-		outputType, err := ask.OutputType()
+		outputType, err := cmd.Flags().GetString("dest")
 		util.MaybePanic(err)
+		if outputType == "" {
+			outputType, err = ask.OutputType()
+			util.MaybePanic(err)
+		}
 		var output io.Writer
 		switch outputType {
 		case answer.FileOutput:
-			filename, err := ask.OutputFilename()
+			filename, err := cmd.Flags().GetString("filename")
 			util.MaybePanic(err)
+			if filename == "" {
+				filename, err = ask.OutputFilename()
+				util.MaybePanic(err)
+			}
 			file, err := os.Create(filename)
 			util.MaybePanic(err)
 			defer func() {
@@ -93,5 +98,9 @@ func loadConfig(cmd *cobra.Command, dest interface{}) error {
 
 func init() {
 	rootCmd.AddCommand(rankCmd)
-	rankCmd.PersistentFlags().StringP("config", "c", "", "--config settings1.env or -c settings2.env")
+
+	// TODO provide different format styles
+	// rankCmd.Flags().StringP("format", "f", "csv", "output format")
+	rankCmd.Flags().StringP("dest", "d", "", "--dest file or -d stdout")
+	rankCmd.Flags().StringP("filename", "n", "", "--filename output.csv or -n output.csv")
 }

@@ -8,6 +8,8 @@ import (
 	"io"
 	"span-challenge/internal/usecase"
 	"span-challenge/pkg/models"
+	"span-challenge/pkg/platform"
+	"strings"
 	"testing"
 )
 
@@ -45,20 +47,20 @@ func TestWriteRankingsCSV(t *testing.T) {
 			wantErr: false,
 		}, {
 			name:    "with non-empty list",
-			args:    args{list: models.TeamRankList{{TeamName: "Team A", Points: 1}}, w: bytes.NewBuffer([]byte{})},
-			wantW:   []byte("1. Team A, 1 pts\n"),
+			args:    args{list: models.TeamRankList{{TeamName: "Team A", Points: 1, Rank: 1}}, w: bytes.NewBuffer([]byte{})},
+			wantW:   []byte("1. Team A, 1 pt" + platform.LineSeparator),
 			wantErr: false,
 		}, {
 			name: "with multiple teams",
 			args: args{
 				list: models.TeamRankList{
-					{TeamName: "Team A", Points: 2},
-					{TeamName: "Team B", Points: 2},
-					{TeamName: "Team C", Points: 0},
+					{TeamName: "Team A", Points: 2, Rank: 1},
+					{TeamName: "Team B", Points: 2, Rank: 1},
+					{TeamName: "Team C", Points: 0, Rank: 3},
 				},
 				w: bytes.NewBuffer([]byte{}),
 			},
-			wantW:   []byte("1. Team A, 2 pts\n2. Team B, 2 pts\n3. Team C, 0 pts\n"),
+			wantW:   []byte(strings.ReplaceAll("1. Team A, 2 pts\n1. Team B, 2 pts\n3. Team C, 0 pts\n", `\n`, platform.LineSeparator)),
 			wantErr: false,
 		}, {
 			name:    "with a bad writer",
