@@ -6,7 +6,7 @@ This repository is a submission for the SPAN developer challenge.
 
 I have chosen to go with golang as this is my preferred language and ideally suited to CLI applications.
 
-The pattern loosely followed within this repository is to use the Clean Architecture whereby `entities` or `models` are a central part of the dependency flow which then moves outwards to more aggregating packages. Where it was more difficult to follow this pattern, sub-packages were used to ensure there were no circular dependencies.
+The pattern loosely followed within this repository is to use the so called [Clean Architecture](https://blog.cleancoder.com/uncle-bob/2012/08/13/the-clean-architecture.html) pattern whereby `entities` or `models` are a central part of the dependency flow which then moves outwards to more aggregating packages. Where it was more difficult to follow this pattern, sub-packages were used to ensure there were no circular dependencies effectively pushing certain parts of the concern more to the center of the dependency graph.
 
 The CLI tool utilizes a library called [cobra](https://github.com/spf13/cobra) which has preset conventions as well as completions and ‘help’ output. Cobra is well-used and liked in the golang community and has many well known projects using it for example 
 
