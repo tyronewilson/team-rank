@@ -216,3 +216,68 @@ func TestMatchResult_GetWinner(t *testing.T) {
 		})
 	}
 }
+
+func TestMatchResult_OpponentOf(t *testing.T) {
+	matchResult := models.MatchResult{
+		TeamA:      "Team A",
+		TeamB:      "Team B",
+		TeamAScore: 1,
+		TeamBScore: 0,
+	}
+
+	type args struct {
+		teamName string
+	}
+	tests := []struct {
+		name    string
+		fields  models.MatchResult
+		args    args
+		want    string
+		wantErr bool
+	}{
+		{
+			name:    "when the input team is empty",
+			fields:  matchResult,
+			args:    args{teamName: ""},
+			want:    "",
+			wantErr: true,
+		}, {
+			name:    "when the input team is not in the match",
+			fields:  matchResult,
+			args:    args{teamName: "Team C"},
+			want:    "",
+			wantErr: true,
+		}, {
+			name:    "when the matchResult is actually blank",
+			fields:  models.MatchResult{},
+			args:    args{teamName: "Team A"},
+			want:    "",
+			wantErr: true,
+		}, {
+			name:    "when the input team is Team A",
+			fields:  matchResult,
+			args:    args{teamName: "Team A"},
+			want:    "Team B",
+			wantErr: false,
+		}, {
+			name:    "when the input team is Team B",
+			fields:  matchResult,
+			args:    args{teamName: "Team B"},
+			want:    "Team A",
+			wantErr: false,
+		},
+	}
+	for _, tt := range tests {
+		t.Run(tt.name, func(t *testing.T) {
+
+			got, err := tt.fields.OpponentOf(tt.args.teamName)
+			if (err != nil) != tt.wantErr {
+				t.Errorf("OpponentOf() error = %v, wantErr %v", err, tt.wantErr)
+				return
+			}
+			if got != tt.want {
+				t.Errorf("OpponentOf() got = %v, want %v", got, tt.want)
+			}
+		})
+	}
+}

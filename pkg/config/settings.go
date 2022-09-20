@@ -4,15 +4,15 @@ import (
 	"fmt"
 )
 
-// Rules encapsulates the rules for ranking teams based on match results
-type Rules struct {
+// RankingRules encapsulates the rules for ranking teams based on match results
+type RankingRules struct {
 	WinPoints  int `yaml:"win_points" env:"SPAN_WIN_POINTS" env-default:"3"`
 	DrawPoints int `yaml:"draw_points" env:"SPAN_DRAW_POINTS" env-default:"1"`
 	LossPoints int `yaml:"loss_points" env:"SPAN_LOSS_POINTS" env-default:"0"`
 }
 
 // Validate validates the rules configuration.
-func (r Rules) Validate() error {
+func (r RankingRules) Validate() error {
 	if r.WinPoints < 0 {
 		return fmt.Errorf("win points must be greater than or equal to 0")
 	}

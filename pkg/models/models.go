@@ -1,6 +1,7 @@
 package models
 
 import (
+	"github.com/pkg/errors"
 	"span-challenge/pkg/errs"
 )
 
@@ -37,10 +38,33 @@ func (m MatchResult) GetWinner() (string, error) {
 // Given that we will do validations on models, it is highly likely that there would be a circular dependency if we were
 // to put this function inside some kind of validation package
 // The method is exported because we want to test it in the models_test package. It could be tested in the same package but given
-// that the method is a simple statement of truth and innocuous, it is not worth the effort to test it in the same package
+// that the method is a simple statement of truth and innocuous, it is not worth the pollution to test it in the same package
 func (m MatchResult) HasTwoTeams() bool {
 	return m.TeamA != "" && m.TeamB != ""
 }
 
+// OpponentOf returns the name of the opponent of the input team
+func (m MatchResult) OpponentOf(teamName string) (string, error) {
+	if teamName == "" {
+		return "", errors.New("provided name cannot be empty")
+	}
+	if teamName == m.TeamA {
+		return m.TeamB, nil
+	}
+	if teamName == m.TeamB {
+		return m.TeamA, nil
+	}
+	return "", errors.Errorf("team '%s' is not part of the match", teamName)
+}
+
 // ResultSet is a collection of MatchResults
 type ResultSet []*MatchResult
+
+type ResultStream chan *MatchResult
+
+type TeamRank struct {
+	TeamName string
+	Points   int
+}
+
+type TeamRankList []*TeamRank
