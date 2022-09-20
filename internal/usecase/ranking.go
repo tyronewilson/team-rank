@@ -16,6 +16,7 @@ type configTeamRankerImpl struct {
 	cfg config.RankingRules
 }
 
+// TeamTally is a map of team names to points
 type TeamTally map[string]int
 
 // TallyResultSet tallies the points for each team in the provided result stream

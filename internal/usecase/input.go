@@ -29,13 +29,13 @@ func StreamResults(errs util.ErrorHandler, inputs ...io.Reader) models.ResultStr
 					errs.HandleError(errors.Errorf("invalid line %s at %d in input: %d", line, count, i))
 					continue
 				}
-				teamA, scoreA, err := parse.ParseScore(items[0])
+				teamA, scoreA, err := parse.TeamScore(items[0])
 				if err != nil {
 					log.Error().Err(err).Caller().Int("input", i).Int("line", count).Msgf("unable to parse score: %s", items[0])
 					errs.HandleError(errors.Wrapf(err, "input: %d line: %d", i, count))
 					continue
 				}
-				teamB, scoreB, err := parse.ParseScore(items[1])
+				teamB, scoreB, err := parse.TeamScore(items[1])
 				if err != nil {
 					log.Error().Err(err).Caller().Int("input", i).Int("line", count).Msgf("unable to parse score: %s", items[1])
 					errs.HandleError(errors.Wrapf(err, "input: %d line: %d", i, count))

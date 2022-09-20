@@ -16,6 +16,7 @@ func OutputType() (string, error) {
 	return outputType, err
 }
 
+// OutputFilename asks the user the filename the user wants to write to
 func OutputFilename() (string, error) {
 	var filename string
 	prompt := &survey.Input{

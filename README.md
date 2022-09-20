@@ -66,6 +66,23 @@ SUM:                             37            157             55           2133
 
 ```
 
+## Quality Control
+The following output was obtained by running goreportcard-cli
+
+```shell
+Grade: A+ (100.0%)
+Files: 30
+Issues: 0
+gofmt: 100%
+go_vet: 100%
+gocyclo: 100%
+golint: 100%
+license: 100%
+ineffassign: 100%
+misspell: 0%
+
+```
+
 ## Sample Output Comparison
 
 To compare the output of this cli with the sample provided in the assignment you can run the following

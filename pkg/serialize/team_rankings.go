@@ -6,6 +6,7 @@ import (
 	"spanchallenge/pkg/platform"
 )
 
+// TeamRanksAsCSV takes a list of team ranks and returns a CSV string
 func TeamRanksAsCSV(l models.TeamRankList) []byte {
 	var output []byte
 	for _, team := range l {

@@ -7,6 +7,7 @@ import (
 	"spanchallenge/pkg/serialize"
 )
 
+// WriteRankingsCSV writes the rankings to the writer in CSV format
 func WriteRankingsCSV(list models.TeamRankList, w io.Writer) error {
 	log.Debug().Caller().Msgf("writing rankings to CSV")
 	if list == nil {

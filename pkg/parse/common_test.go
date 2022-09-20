@@ -108,16 +108,16 @@ func TestParseScore(t *testing.T) {
 	}
 	for _, tt := range tests {
 		t.Run(tt.name, func(t *testing.T) {
-			got, got1, err := parse.ParseScore(tt.args.str)
+			got, got1, err := parse.TeamScore(tt.args.str)
 			if (err != nil) != tt.wantErr {
-				t.Errorf("ParseScore() error = %v, wantErr %v", err, tt.wantErr)
+				t.Errorf("TeamScore() error = %v, wantErr %v", err, tt.wantErr)
 				return
 			}
 			if got != tt.want {
-				t.Errorf("ParseScore() got = %v, want %v", got, tt.want)
+				t.Errorf("TeamScore() got = %v, want %v", got, tt.want)
 			}
 			if got1 != tt.want1 {
-				t.Errorf("ParseScore() got1 = %v, want %v", got1, tt.want1)
+				t.Errorf("TeamScore() got1 = %v, want %v", got1, tt.want1)
 			}
 		})
 	}

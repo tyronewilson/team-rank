@@ -8,6 +8,7 @@ import (
 	"strconv"
 )
 
+// IsValidMatchResult takes a match result and returns true if it is valid, false, error otherwise
 func IsValidMatchResult(result models.MatchResult) (bool, error) {
 	if !result.HasTwoTeams() {
 		return false, errs.ErrMissingTeams(result.TeamA, result.TeamB)
@@ -15,6 +16,7 @@ func IsValidMatchResult(result models.MatchResult) (bool, error) {
 	return true, nil
 }
 
+// IsValidScoreString takes a string and returns true if it is a valid score, false, error otherwise
 func IsValidScoreString(str string) (bool, error) {
 	teamName, scoreStr := util.SplitOnLastSpace(str)
 	if teamName == "" || scoreStr == "" {

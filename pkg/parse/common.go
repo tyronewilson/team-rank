@@ -8,8 +8,8 @@ import (
 	"strings"
 )
 
-// ParseScore takes a string in the input format TeamName score and returns the team name, score and any error
-func ParseScore(str string) (string, int, error) {
+// TeamScore takes a string in the input format TeamName score and returns the team name, score and any error
+func TeamScore(str string) (string, int, error) {
 	str = strings.TrimSpace(str)
 	if valid, err := validate.IsValidScoreString(str); !valid {
 		return "", 0, err

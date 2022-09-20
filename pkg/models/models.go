@@ -60,12 +60,15 @@ func (m MatchResult) OpponentOf(teamName string) (string, error) {
 // ResultSet is a collection of MatchResults
 type ResultSet []*MatchResult
 
+// ResultStream is a channel of MatchResults
 type ResultStream chan *MatchResult
 
+// TeamRank embodies the aggregated performance of a team
 type TeamRank struct {
 	TeamName string
 	Points   int
 	Rank     int
 }
 
+// TeamRankList is a list of TeamRank
 type TeamRankList []*TeamRank

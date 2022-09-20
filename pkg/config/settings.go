@@ -25,6 +25,7 @@ func (r RankingRules) Validate() error {
 	return nil
 }
 
+// Validatable is an interface that can be implemented by any struct that needs to be validated
 type Validatable interface {
 	Validate() error
 }
