@@ -3,9 +3,9 @@ package serialize_test
 import (
 	"math/rand"
 	"reflect"
-	"span-challenge/pkg/models"
-	"span-challenge/pkg/platform"
-	"span-challenge/pkg/serialize"
+	"spanchallenge/pkg/models"
+	"spanchallenge/pkg/platform"
+	"spanchallenge/pkg/serialize"
 	"strconv"
 	"strings"
 	"testing"

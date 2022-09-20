@@ -3,8 +3,8 @@ package usecase
 import (
 	"github.com/rs/zerolog/log"
 	"io"
-	"span-challenge/pkg/models"
-	"span-challenge/pkg/serialize"
+	"spanchallenge/pkg/models"
+	"spanchallenge/pkg/serialize"
 )
 
 func WriteRankingsCSV(list models.TeamRankList, w io.Writer) error {

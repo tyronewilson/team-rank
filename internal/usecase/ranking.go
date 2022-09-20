@@ -3,8 +3,8 @@ package usecase
 import (
 	"github.com/pkg/errors"
 	"sort"
-	"span-challenge/pkg/config"
-	"span-challenge/pkg/models"
+	"spanchallenge/pkg/config"
+	"spanchallenge/pkg/models"
 )
 
 // TeamRanker is an interface that defines the behaviour of a team ranker

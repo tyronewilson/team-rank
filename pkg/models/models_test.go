@@ -1,7 +1,7 @@
 package models_test
 
 import (
-	"span-challenge/pkg/models"
+	"spanchallenge/pkg/models"
 	"testing"
 )
 

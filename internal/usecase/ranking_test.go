@@ -3,9 +3,9 @@ package usecase_test
 import (
 	"github.com/stretchr/testify/assert"
 	"sort"
-	"span-challenge/internal/usecase"
-	"span-challenge/pkg/config"
-	"span-challenge/pkg/models"
+	"spanchallenge/internal/usecase"
+	"spanchallenge/pkg/config"
+	"spanchallenge/pkg/models"
 	"testing"
 )
 

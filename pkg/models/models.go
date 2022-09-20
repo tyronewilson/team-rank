@@ -2,7 +2,7 @@ package models
 
 import (
 	"github.com/pkg/errors"
-	"span-challenge/pkg/errs"
+	"spanchallenge/pkg/errs"
 )
 
 // MatchResult embodies a single match result TeamA vs TeamB and their respective scores

@@ -6,9 +6,9 @@ import (
 	"github.com/pkg/errors"
 	"github.com/stretchr/testify/assert"
 	"io"
-	"span-challenge/internal/usecase"
-	"span-challenge/pkg/models"
-	"span-challenge/pkg/platform"
+	"spanchallenge/internal/usecase"
+	"spanchallenge/pkg/models"
+	"spanchallenge/pkg/platform"
 	"strings"
 	"testing"
 )

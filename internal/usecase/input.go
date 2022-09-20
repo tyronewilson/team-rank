@@ -5,9 +5,9 @@ import (
 	"github.com/pkg/errors"
 	"github.com/rs/zerolog/log"
 	"io"
-	"span-challenge/pkg/models"
-	"span-challenge/pkg/parse"
-	"span-challenge/pkg/util"
+	"spanchallenge/pkg/models"
+	"spanchallenge/pkg/parse"
+	"spanchallenge/pkg/util"
 	"strings"
 )
 

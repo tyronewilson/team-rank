@@ -29,20 +29,20 @@ Essentially any teams with 0 points are simply listed alphabetically rather than
 The output of `go test -cover ./...` is as follows:
 
 ```bash
-?       span-challenge  [no test files]
-?       span-challenge/cmd      [no test files]
-?       span-challenge/cmd/answer       [no test files]
-?       span-challenge/cmd/ask  [no test files]
-ok      span-challenge/internal/usecase 0.004s  coverage: 83.5% of statements
-ok      span-challenge/pkg/config       0.002s  coverage: 100.0% of statements
-?       span-challenge/pkg/errs [no test files]
-?       span-challenge/pkg/fixtures     [no test files]
-ok      span-challenge/pkg/models       0.005s  coverage: 100.0% of statements
-ok      span-challenge/pkg/parse        0.014s  coverage: 87.5% of statements
-?       span-challenge/pkg/platform     [no test files]
-ok      span-challenge/pkg/serialize    0.003s  coverage: 87.5% of statements
-ok      span-challenge/pkg/util 0.003s  coverage: 75.9% of statements
-ok      span-challenge/pkg/validate     0.005s  coverage: 100.0% of statements
+?       spanchallenge  [no test files]
+?       spanchallenge/cmd      [no test files]
+?       spanchallenge/cmd/answer       [no test files]
+?       spanchallenge/cmd/ask  [no test files]
+ok      spanchallenge/internal/usecase 0.004s  coverage: 83.5% of statements
+ok      spanchallenge/pkg/config       0.002s  coverage: 100.0% of statements
+?       spanchallenge/pkg/errs [no test files]
+?       spanchallenge/pkg/fixtures     [no test files]
+ok      spanchallenge/pkg/models       0.005s  coverage: 100.0% of statements
+ok      spanchallenge/pkg/parse        0.014s  coverage: 87.5% of statements
+?       spanchallenge/pkg/platform     [no test files]
+ok      spanchallenge/pkg/serialize    0.003s  coverage: 87.5% of statements
+ok      spanchallenge/pkg/util 0.003s  coverage: 75.9% of statements
+ok      spanchallenge/pkg/validate     0.005s  coverage: 100.0% of statements
 
 ```
 

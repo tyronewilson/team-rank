@@ -1,4 +1,4 @@
-module span-challenge
+module spanchallenge
 
 go 1.18
 

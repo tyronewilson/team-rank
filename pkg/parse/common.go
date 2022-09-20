@@ -2,8 +2,8 @@ package parse
 
 import (
 	"github.com/pkg/errors"
-	"span-challenge/pkg/util"
-	"span-challenge/pkg/validate"
+	"spanchallenge/pkg/util"
+	"spanchallenge/pkg/validate"
 	"strconv"
 	"strings"
 )

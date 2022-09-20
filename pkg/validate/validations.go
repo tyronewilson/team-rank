@@ -2,9 +2,9 @@ package validate
 
 import (
 	"github.com/pkg/errors"
-	"span-challenge/pkg/errs"
-	"span-challenge/pkg/models"
-	"span-challenge/pkg/util"
+	"spanchallenge/pkg/errs"
+	"spanchallenge/pkg/models"
+	"spanchallenge/pkg/util"
 	"strconv"
 )
 

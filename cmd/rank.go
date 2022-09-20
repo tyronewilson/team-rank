@@ -8,11 +8,11 @@ import (
 	"github.com/spf13/cobra"
 	"io"
 	"os"
-	"span-challenge/cmd/answer"
-	"span-challenge/cmd/ask"
-	"span-challenge/internal/usecase"
-	"span-challenge/pkg/config"
-	"span-challenge/pkg/util"
+	"spanchallenge/cmd/answer"
+	"spanchallenge/cmd/ask"
+	"spanchallenge/internal/usecase"
+	"spanchallenge/pkg/config"
+	"spanchallenge/pkg/util"
 )
 
 var rankCmd = &cobra.Command{

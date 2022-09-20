@@ -1,8 +1,8 @@
 package parse_test
 
 import (
-	"span-challenge/pkg/parse"
-	"span-challenge/pkg/util"
+	"spanchallenge/pkg/parse"
+	"spanchallenge/pkg/util"
 	"testing"
 )
 

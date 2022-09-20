@@ -3,7 +3,7 @@ package util_test
 import (
 	"fmt"
 	"github.com/stretchr/testify/assert"
-	"span-challenge/pkg/util"
+	"spanchallenge/pkg/util"
 	"testing"
 )
 

@@ -1,8 +1,8 @@
 package validate_test
 
 import (
-	"span-challenge/pkg/models"
-	"span-challenge/pkg/validate"
+	"spanchallenge/pkg/models"
+	"spanchallenge/pkg/validate"
 	"testing"
 )
 

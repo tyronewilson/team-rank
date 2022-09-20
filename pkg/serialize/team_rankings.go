@@ -2,8 +2,8 @@ package serialize
 
 import (
 	"fmt"
-	"span-challenge/pkg/models"
-	"span-challenge/pkg/platform"
+	"spanchallenge/pkg/models"
+	"spanchallenge/pkg/platform"
 )
 
 func TeamRanksAsCSV(l models.TeamRankList) []byte {

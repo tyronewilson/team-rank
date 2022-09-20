@@ -2,7 +2,7 @@ package ask
 
 import (
 	"github.com/AlecAivazis/survey/v2"
-	"span-challenge/cmd/answer"
+	"spanchallenge/cmd/answer"
 )
 
 // OutputType is the type of output the user wants to get
