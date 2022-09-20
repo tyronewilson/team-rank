@@ -111,7 +111,7 @@ func setRanks(list models.TeamRankList) {
 	// We are going to make bins of the same points with incrementing ranks
 	list[0].Rank = 1 // because we have different ways to rank, we must respect the order of list so the first one is always 1
 	for i := 1; i < len(list); i++ {
-		if list[i].Points == list[i-1].Points {
+		if list[i].Points == list[i-1].Points && list[i].Points > 0 {
 			list[i].Rank = list[i-1].Rank
 		} else {
 			list[i].Rank = i + 1

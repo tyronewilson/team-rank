@@ -16,7 +16,7 @@ import (
 )
 
 var rankCmd = &cobra.Command{
-	Use:   "rank",
+	Use:   "rank <list of filenames>",
 	Short: "Takes an input file of team match results and outputs a ranked list of teams",
 	Run: func(cmd *cobra.Command, args []string) {
 		if len(args) < 1 {
@@ -92,7 +92,7 @@ func loadConfig(cmd *cobra.Command, dest interface{}) error {
 		}
 		return nil
 	}
-	log.Info().Msg("load environment config")
+	log.Debug().Msg("load environment config")
 	return cleanenv.ReadEnv(dest)
 }
 
@@ -101,6 +101,6 @@ func init() {
 
 	// TODO provide different format styles
 	// rankCmd.Flags().StringP("format", "f", "csv", "output format")
-	rankCmd.Flags().StringP("dest", "d", "", "--dest file or -d stdout")
-	rankCmd.Flags().StringP("filename", "n", "", "--filename output.csv or -n output.csv")
+	rankCmd.Flags().StringP("dest", "d", "", "--dest file or -d stdout (default: asks)")
+	rankCmd.Flags().StringP("filename", "n", "", "--filename output.csv or -n output.csv (default: asks)")
 }
