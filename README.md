@@ -67,7 +67,7 @@ SUM:                             37            157             55           2133
 ```
 
 ## Quality Control
-The following output was obtained by running goreportcard-cli
+The following output was obtained by running goreportcard-cli (misspell was omitted for the sake of time)
 
 ```shell
 Grade: A+ (100.0%)
