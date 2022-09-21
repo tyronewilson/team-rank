@@ -10,7 +10,7 @@ The pattern loosely followed within this repository is to use the so-called [Cle
 
 The CLI tool utilizes a library called [cobra](https://github.com/spf13/cobra) which has preset conventions as well as completions and ‘help’ output. Cobra is well-used and liked in the golang community and has many well known projects using it for example [kubectl](https://github.com/kubernetes/kubectl/blob/master/go.mod#L27)
 
-To invoke the cli you simply need to run `go run ./cli space rank <input-file(s)>`
+To invoke the cli you simply need to run `go run . rank <input-file(s)>`
 
 The solution differs a little from the described solution in the sense that if a team has zero points they do not receive the same rank number but rather have a sequential number. it was noted that in the output example when two teams had the same rank the following rank would switch back to a sequential number dictated by its alphabetical position. This is illustrated in the sample output below (note the jump from 3-5):
 
@@ -109,7 +109,7 @@ There is no difference between the two files.
 
 The CLI doesn't enforce the memorization of commandline args. You can provide them as a shortcut but if you don't provide any required flags, the CLI will prompt you for the values.
 
-Log level can be adjusted with the -l flag e.g. `go run ./cli space rank -l debug <input-file(s)>`
+Log level can be adjusted with the -l flag e.g. `go run . rank -l debug <input-file(s)>`
 
 The CLI handles any number of files provided and gives a single consolidated result
 
